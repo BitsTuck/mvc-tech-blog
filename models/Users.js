@@ -12,13 +12,15 @@ Users.init(
     id:{
             type: DataTypes.INTEGER,
             allowNull: false,
-            primaryKey: true,
-            autoIncrement: true,
     },
     username: {
         type: DataTypes.STRING,
         allowNull: false,
+        primaryKey: true,
         unique: true,
+        validate: {
+            isEmail: true,
+        },
     },
     email: {
         type: DataTypes.STRING,

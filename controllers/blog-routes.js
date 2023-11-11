@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
             include: [
                 {
                     model: Post,
-                    attributes: ['title', 'author', 'content', 'comment']
+                    attributes: ['title', 'author', 'content']
                 }
             ]
         });
@@ -21,3 +21,5 @@ router.get('/', async (req, res) => {
         res.status(500).json(err)
     }
 })
+
+module.exports = router;

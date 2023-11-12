@@ -22,8 +22,8 @@ Post.init (
         author_id: {
             type: DataTypes.STRING,
             references: {
-                model: 'user',
-                key: 'id',
+                model: 'users',
+                key: 'username',
             },
         },
 

@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const { Post, Comments } = require('../models');
 
-router.get('/post', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
-        const dbUserData = await Post.findAll({
+        const dbPostData = await Post.findAll({
             include: [
                 {
                     model: Post,
@@ -19,7 +19,7 @@ router.get('/post', async (req, res) => {
             post.get({ plain: true })
         );
 
-        res.render('blogposts', {
+        res.render('post', {
             blogPost,
             loggedIn: req.session.loggedIn,
         });

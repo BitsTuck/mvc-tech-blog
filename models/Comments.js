@@ -16,10 +16,10 @@ Comments.init (
             allowNull: false,
         },
         author_id: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             references: {
                 model: 'users',
-                key: 'username',
+                key: 'id',
             },
         },
         post_id: {

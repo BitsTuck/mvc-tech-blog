@@ -45,6 +45,7 @@ router.get('/post:id', async (req, res) => {
         });
         const blogPost = dbPostData.get({ plain: true });
 
+        console.log('rendering handlebars')
     res.render('post', {
         blogPost,
         loggedIn: req.session.loggedIn,

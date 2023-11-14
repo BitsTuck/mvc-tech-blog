@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const { Post } = require('../../models');
 
-router.post('/post', async (req, res) => {
+// THIS ALL CHECKS OUT
+// /api/blogs
+router.post('/', async (req, res) => {
     try {
         const dbBlogData = await Post.create({
             title: req.body.title,
@@ -20,31 +22,34 @@ router.post('/post', async (req, res) => {
     }
 });
 
-router.put('/post:id', (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
-        Post.update(
+        const updatePost = await Post.update(
             {
                 title: req.body.title,
                 content: req.body.content
             },
             {
                 where: {
-                    post_id: req.params.post_id
+                    id: req.params.id
                 }
-            })
+            });
+            res.status(200).json(updatePost)
+
     } catch (err) {
         console.log(err);
         res.status(500).json(err)
     }
 });
 
-router.delete('/post', async (req, res) => {
+router.delete('/', async (req, res) => {
     try {
-        Post.destroy({
+        const deletePost = await Post.destroy({
             where: {
                 id: req.body.id,
             }
         });
+        res.status(200).json(deletePost)
 
     } catch (err) {
         console.log(err);

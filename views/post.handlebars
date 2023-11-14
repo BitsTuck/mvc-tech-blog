@@ -1,11 +1,13 @@
 <div class="title bg-light px-1 py-2">
-    <h2 class="blog-header">
-    {{title}} by {{blogPost.author_id}}
-    </h2>
+    <h2 class="blog-header"> Hello
+        {{#each blogPost}}
+    {{!-- {{#each blogPost.title}}{{/each}}</h2>  --}}
     </div>
 
 <div class="content mt-2 bg-light px-1 py-2">
+    <h3>{{title}}</h3>
     <p>
-    {{blogPost.content}}
+    {{content}}
     </p>
+    {{/each}}
 </div>

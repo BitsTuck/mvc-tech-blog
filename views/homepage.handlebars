@@ -1,11 +1,12 @@
 <div class="title bg-light px-1 py-2">
     <h2 class="blog-header"> Hello
+        {{#each blogPost}}
     </div>
 
 <div class="content mt-2 bg-light px-1 py-2">
-    <h3>{{blogPost.title}}</h3>
+    <h3>{{title}}</h3>
     <p>
-    {{blogPost.content}}
+    {{content}}
     </p>
-
+    {{/each}}
 </div>

@@ -2,29 +2,25 @@ const router = require('express').Router();
 const { Post, Comments, Users } = require('../models');
 
 router.get('/', async (req, res) => {
-    // try {
-    //     const dbPostData = await Post.findAll({
-    //         include: [
-    //             {
-    //                 model: Post,
-    //                 attributes: ['title', 'content', 'author_id'],
-    //                 model: Comments,
-    //                 attributes: ['content', 'author_id']
-
-    //             }
-    //         ]
-    //     });
-
     try {
-            const postData = await Post.findAll({
-              include: [Users],
-            });
+        const dbPostData = await Post.findAll({
+            include: [
+                {   model: Users,
+                    attributes: ['username'],
+                    model: Post,
+                    attributes: ['title', 'content', 'author_id'],
+                    model: Comments,
+                    attributes: ['content', 'author_id']
 
-        const blogPost = postData.map((post) =>
+                }
+            ]
+        });
+
+        const blogPost = dbPostData.map((post) =>
             post.get({ plain: true })
         );
-        console.log('this is a blog' + JSON.stringify(postData))
-        res.render('post', {
+
+        res.render('homepage', {
             blogPost
             // loggedIn: req.session.loggedIn,
         }
@@ -36,13 +32,13 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/post:id', async (req, res) => {
+router.get('/post/:id', async (req, res) => {
     try {
         const dbPostData = await Post.findByPk(req.params.id, {
             include: [
                 {
                     model: Post,
-                    attributes: ['title', 'content', 'author_id'],
+                    attributes: ['id', 'title', 'content', 'author_id'],
                     model: Comments,
                     attributes: ['content', 'author_id']
 
@@ -53,7 +49,7 @@ router.get('/post:id', async (req, res) => {
 
     res.render('post', {
         blogPost,
-        loggedIn: req.session.loggedIn,
+        // loggedIn: req.session.loggedIn,
     });
 
 } catch (err) {

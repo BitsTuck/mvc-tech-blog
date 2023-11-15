@@ -23,11 +23,11 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.get('/', async (req, res)=> {
+router.get('/login', async (req, res)=> {
     try {
         const dbUserData = await Users.findOne({
             where: {
-                username: req.body.username,
+                email: req.body.email,
             }
         });
 
@@ -60,8 +60,11 @@ router.get('/', async (req, res)=> {
 router.post('/logout', (req, res) => {
     if(req.session.loggedIn) {
         req.session.destroy(() => {
+            res.redirect('/')
             res.status(204).end();
         });
+
+
     } else {
         res.status(404).end();
     }

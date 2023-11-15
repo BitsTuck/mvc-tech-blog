@@ -5,18 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MVC Tech Blog</title>
-    <link rel="stylesheet" type= "text/css" href="/css/jass.css">
-    <link rel="stylesheet" type= "text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/jass.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 
 </head>
 
 <body>
     <container>
-    <nav class="nav navbar-expand-lg px-4 py-3 bg-light">
-        <a class="nav-link p-4" href="#">Dashboard</a>
-        <a class="nav-link p-4" href="#">Login</a>
-        <a class="nav-link p-4" href="#">Logout</a>
-      </nav>
+        <nav class="nav navbar-expand-lg px-4 py-3 bg-light">
+            <a class="nav-link p-4" href="/">Dashboard</a>
+            {{!-- {{#if loggedIn}} --}}
+            <a class="nav-link p-4" href="/api/users/logout">Logout</a>
+            {{!-- {{else}} --}}
+            <a class="nav-link p-4" href="/">Login</a>
+            {{!-- {{/if}} --}}
+
+        </nav>
     </container>
     <header class="header bg-dark text-light px-5 py-3">
         <h1>MVC Tech Blog</h1>
@@ -27,6 +31,8 @@
             {{{body}}}
         </div>
     </main>
+    {{!-- {{#if loggedIn}}
+    <script src="../../public/js/logout.js"></script> --}}
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

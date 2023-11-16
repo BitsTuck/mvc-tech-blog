@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.get('/login', async (req, res)=> {
+router.post('/login', async (req, res)=> {
     try {
         const dbUserData = await Users.findOne({
             where: {
@@ -33,7 +33,7 @@ router.get('/login', async (req, res)=> {
 
         if (!dbUserData) {
             res.status(400);
-            res.json({ message: 'Incorrect username. Please try again'});
+            res.json({ message: 'Incorrect email address. Please try again'});
             return;
         }
 

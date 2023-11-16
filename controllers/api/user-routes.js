@@ -51,17 +51,18 @@ router.post('/login', async (req, res)=> {
             res.status(200);
             res.json({ user: dbUserData, message: 'Thanks for logging in'});
         });
+
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
     }
 });
 
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
     if(req.session.loggedIn) {
         req.session.destroy(() => {
-            res.redirect('/')
-            res.status(204).end();
+            res.redirect('/login')
+            // res.status(204).end();
         });
 
 

@@ -1,3 +1,5 @@
+{{log blogPost.comments}}
+
 <div class="title bg-light px-1 py-2">
     <h2 class="blog-header"> Hello
     </div>
@@ -6,10 +8,19 @@
     <h3>{{blogPost.title}}</h3>
     <p>
     {{blogPost.content}}
-    {{#each comments.content}}{{/each}}
     </p>
 
-    <button type="button" class="btn btn-primary">Comment</button>
+    <p>
+    {{#each blogPost.comments}}
+    <p>
+        {{content}}
+    </p>
+    {{/each}}
+    </p>
+
+    <button type="button" class="btn btn-primary">Update</button>
     <button type="button" class="btn btn-danger">Delete</button>
 
 </div>
+
+<script src = "/js/post.js"

@@ -20,9 +20,9 @@ router.get('/', async (req, res) => {
             post.get({ plain: true })
         );
 
-        res.render('login', {
-            blogPost
-            // loggedIn: req.session.loggedIn,
+        res.render('homepage', {
+            blogPost,
+            loggedIn: req.session.loggedIn,
         }
         );
 
@@ -46,7 +46,7 @@ router.get('/post/:id', async (req, res) => {
             ]
         });
         const blogPost = dbPostData.get({ plain: true });
-
+        console.log(blogPost)    
     res.render('post', {
         blogPost,
         // loggedIn: req.session.loggedIn,
@@ -115,8 +115,9 @@ router.get('/post/:id', async (req, res) => {
 // })
 
 router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-        res.render('/');
+ 
+    if (!req.session.loggedIn) {
+        res.render('login');
         return;
         }
         

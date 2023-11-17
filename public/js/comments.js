@@ -1,19 +1,18 @@
 console.log("this is the real newpost button")
 
-const updateBtn = document.querySelector('.btn-primary');
+const commentBtn = document.querySelector('#submit-comment');
 
 // const id = document.querySelector('#exampleFormControlInput1')
-const title = document.querySelector('#exampleFormControlInput2')
-const content = document.querySelector('#exampleFormControlTextarea1')
+const username = document.querySelector('#comment-user')
+const content = document.querySelector('#comment-text')
 
-updateBtn.addEventListener('click', async () => {
+commentBtn.addEventListener('click', async () => {
     console.log ('this button works')
-    const response = await fetch(`/api/blogs/`, {
+    const response = await fetch(`/api/blogs/${id}`, {
         method: 'POST',
         body: JSON.stringify({
-          // id,
-          title,
-          content
+          content,
+          author_id
         }),
         headers: {
           'Content-Type': 'application/json',
@@ -23,6 +22,8 @@ updateBtn.addEventListener('click', async () => {
       if (response.ok) {
         document.location.replace(`/`);
       } else {
-        alert('Failed to create post');
+        alert('Failed to create comment');
       }
     });
+
+    

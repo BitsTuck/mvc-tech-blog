@@ -1,24 +1,28 @@
 <div class="content mt-2 bg-light px-1 py-2">
-    <h3>{{blogPost.title}}</h3>
-    <p>
+  <h3>{{blogPost.title}}</h3>
+  <p>
     {{blogPost.content}}
-    </p>
+  </p>
 
-    <p>
-    {{#each blogPost.comments}}
-    <p>
-        {{content}}
-    </p>
-    {{/each}}
-    </p>
-
-    <button type="button" class="btn btn-primary">Update</button>
-    <button type="button" class="btn btn-danger">Delete</button>
-
+  <button type="button" class="btn btn-primary">Update</button>
+  <button type="button" class="btn btn-danger">Delete</button>
 </div>
+<div class="content mt-2 bg-light px-1 py-2"></div>
+<h4>Comments</h4>
+<p>
+  {{#each blogPost.comments}}
+<p>
+  {{content}}
+</p>
+{{/each}}
+</p>
+
+
+
+
 
 <div class="mb-3">
-    <h3>Add a Comment:</h3>
+  <h3>Add a Comment:</h3>
   <label for="exampleFormControlInput1" class="form-label">Username:</label>
   <input type="text" class="form-control" id="comment-user">
 </div>
@@ -27,7 +31,7 @@
   <textarea class="form-control" id="comment-text" rows="3"></textarea>
 </div>
 
-<button type="button" class="btn btn-primary" id="submit-comment">Submit</button>
+<button type="button" class="btn btn-primary" id="submit-comment" data-id={{blogPost.id}}>Submit</button>
 
-<script src = "/js/post.js"></script>
-<script src = "/js/comments.js"></script>
+<script src="/js/post.js"></script>
+<script src="/js/comments.js"></script>

@@ -7,9 +7,9 @@ const deleteBtn = document.querySelector('.btn-danger')
 //     window.location.toString().split('/').length - 1
 //   ];
 
-updateBtn.addEventListener('click', () => {
+updateBtn.addEventListener('click', async () => {
     console.log ('this button works')
-    const response = fetch(`/api/post/${id}`, {
+    const response = await fetch(`/api/post/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
           title,
@@ -27,19 +27,18 @@ updateBtn.addEventListener('click', () => {
       }
     });
 
-    const delButtonHandler = async (event) => {
-      if (event.target.hasAttribute('data-id')) {
-        const id = event.target.getAttribute('data-id');
+
+   deleteBtn.addEventListener('click', async () => { 
+      console.log('delete')
     
-        const response = await fetch(`/api/projects/${id}`, {
+        const response = await fetch(`/api/blogs/${id}`, {
           method: 'DELETE',
         });
     
         if (response.ok) {
-          document.location.replace('/profile');
+          document.location.replace('/'); 
         } else {
-          alert('Failed to delete project');
+          alert('Failed to delete post');
         }
-      }
-
+      })
 

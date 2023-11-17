@@ -5,14 +5,15 @@ const commentBtn = document.querySelector('#submit-comment');
 // const id = document.querySelector('#exampleFormControlInput1')
 const username = document.querySelector('#comment-user')
 const content = document.querySelector('#comment-text')
-
-commentBtn.addEventListener('click', async () => {
+ console.log(commentBtn)
+commentBtn.addEventListener('click', async () => {    
+    const commentBody = content.value
     console.log ('this button works')
-    const response = await fetch(`/api/blogs/${id}`, {
+    const response = await fetch(`/api/blogs/${commentBtn.dataset.id}/comments`, {
         method: 'POST',
         body: JSON.stringify({
-          content,
-          author_id
+          commentBody,
+          // author_id
         }),
         headers: {
           'Content-Type': 'application/json',

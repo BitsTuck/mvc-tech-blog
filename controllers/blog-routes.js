@@ -60,7 +60,7 @@ router.get('/post/:id', async (req, res) => {
 
 
 router.get('/newpost', (req, res) => {
-    if (!req.session.loggedIn) {
+    if (req.session.loggedIn) {
         res.render('newpost');
         return;
         }

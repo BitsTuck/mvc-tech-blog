@@ -58,39 +58,18 @@ router.get('/post/:id', async (req, res) => {
 }
 });
 
-// router.get('/post/new', async (req, res) => {
-//     try {
-//         const dbPostData = await Post.findAll({
-//             include: [
-//                 {   model: Users,
-//                     attributes: ['username'],
-//                     model: Post,
-//                     attributes: ['title', 'content', 'author_id'],
-//                     model: Comments,
-//                     attributes: ['content', 'author_id']
 
-//                 }
-//             ]
-//         });
-
-//         const blogPost = dbPostData.map((post) =>
-//             post.get({ plain: true })
-//         );
-
-//         res.render('newpost', {
-//             blogPost
-//             // loggedIn: req.session.loggedIn,
-//         }
-//         );
-
-//     } catch (err) {
-//         console.log(err);
-//         res.status(500).json(err);
-//     }
-// });
+router.get('/newpost', (req, res) => {
+    if (!req.session.loggedIn) {
+        res.render('newpost');
+        return;
+        }
+        
+    });
 
 
-// router.post('/post/new', async (req, res) => {
+// router.post('/newpost', async (req, res) => {
+
 //     try {
 //         const newPost = await Post.create({
 //             title: req.body.title,

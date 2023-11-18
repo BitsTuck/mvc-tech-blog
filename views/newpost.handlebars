@@ -1,16 +1,16 @@
-{{!-- <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">User ID:</label>
-  <input type="text" class="form-control" id="exampleFormControlInput1">
-</div> --}}
+
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Blog Title:</label>
-  <input type="text" class="form-control" id="exampleFormControlInput2">
+  <input type="text" class="form-control" id="exampleFormControlInput2">{{blogTitle}}
 </div>
 <div class="mb-3">
   <label for="exampleFormControlTextarea1" class="form-label">Blog Content:</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">{{blogContent}}</textarea>
 </div>
 
-<button type="button" class="btn btn-primary">Submit</button>
+<button type="button" class="btn btn-primary" id="submit-post" >Submit</button>
 
-<script src = "/js/post.js"></script>
+<script src = "/js/newpost.js"></script>
+{{!-- 
+data-id={{user.id}} --}}
+

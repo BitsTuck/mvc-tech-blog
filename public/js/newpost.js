@@ -1,19 +1,18 @@
-console.log("this is the real newpost button")
+const updateBtn = document.querySelector('#submit-post');
 
-const updateBtn = document.querySelector('.btn-primary');
 
-// const id = document.querySelector('#exampleFormControlInput1')
 const title = document.querySelector('#exampleFormControlInput2')
 const content = document.querySelector('#exampleFormControlTextarea1')
 
 updateBtn.addEventListener('click', async () => {
-    console.log ('this button works')
-    const response = await fetch(`/api/blogs/`, {
+    const blogTitle = title.value
+    const blogContent = content.value
+    
+    const response = await fetch(`/newpost`, {
         method: 'POST',
         body: JSON.stringify({
-          // id,
-          title,
-          content
+          blogTitle,
+          blogContent
         }),
         headers: {
           'Content-Type': 'application/json',

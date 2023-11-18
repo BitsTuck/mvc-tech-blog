@@ -72,6 +72,26 @@ router.get('/newpost', (req, res) => {
 
 });
 
+router.put('/updatepost', async (req, res) => {
+    try {
+        const updatePost = await Post.update({
+            title: req.body.title,
+            content: req.body.content
+        },
+        {   
+            where: {
+                post_id: req.params.post_id
+            }
+        })
+        res.status(200).json(updatePost)
+        res.render('post')
+    } catch (err) {
+            console.log(err);
+            res.json(err)
+        };
+
+});
+
 
 router.post('/newpost', async (req, res) => {
     console.log(req.body)
@@ -80,7 +100,7 @@ router.post('/newpost', async (req, res) => {
         const newPost = await Post.create({
             title: req.body.blogTitle,
             content: req.body.blogContent,
-            author_id:req.session.user_id
+            author_id: req.session.user_id
         });
 
         req.session.save(() => {

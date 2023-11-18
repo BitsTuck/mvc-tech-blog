@@ -72,6 +72,16 @@ router.get('/newpost', (req, res) => {
 
 });
 
+router.get('/updatepost', (req, res) => {
+    if (req.session.loggedIn) {
+        res.render('updatepost');
+        return;
+    } else {
+        res.render('login')
+    }
+
+});
+
 router.put('/updatepost', async (req, res) => {
     try {
         const updatePost = await Post.update({

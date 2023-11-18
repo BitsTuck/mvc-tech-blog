@@ -42,14 +42,15 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-router.delete('/', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const deletePost = await Post.destroy({
             where: {
-                id: req.body.id,
+                id: req.params.id,
             }
         });
         res.status(200).json(deletePost)
+        res.render('homepage')
 
     } catch (err) {
         console.log(err);

@@ -1,15 +1,12 @@
 console.log("hi")
 
 const updateBtn = document.querySelector('.btn-primary');
-const deleteBtn = document.querySelector('.btn-danger')
+const deleteBtn = document.querySelector('#delete-post')
 
-// const id = window.location.toString().split('/')[
-//     window.location.toString().split('/').length - 1
-//   ];
 
 updateBtn.addEventListener('click', async () => {
     console.log ('this button works')
-    const response = await fetch(`/api/post/${id}`, {
+    const response = await fetch(`/api/post/${updateBtn.dataset.id}`, {
         method: 'PUT',
         body: JSON.stringify({
           title,
@@ -31,7 +28,7 @@ updateBtn.addEventListener('click', async () => {
    deleteBtn.addEventListener('click', async () => { 
       console.log('delete')
     
-        const response = await fetch(`/api/blogs/${id}`, {
+        const response = await fetch(`/api/blogs/${deleteBtn.dataset.id}`, {
           method: 'DELETE',
         });
     

@@ -74,12 +74,13 @@ router.get('/newpost', (req, res) => {
 
 
 router.post('/newpost', async (req, res) => {
+    console.log(req.body)
 
     try {
         const newPost = await Post.create({
-            title: req.body.title,
-            content: req.body.content,
-            author_id:req.session.user_id,
+            title: req.body.blogTitle,
+            content: req.body.blogContent,
+            author_id:req.session.user_id
         });
 
         req.session.save(() => {
@@ -87,11 +88,9 @@ router.post('/newpost', async (req, res) => {
 
             res.status(200).json(newPost)
         });
-        const blogPost = newPost.get({ plain: true })
 
-        res.render('/', {
-            blogPost
-        })
+
+        res.render('homepage')
 
 
 

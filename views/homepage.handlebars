@@ -1,15 +1,19 @@
 
+{{#each blogPost}}
 
 <div class="title bg-light px-1 py-2">
-        {{#each blogPost}}
-    </div>
+    <a href="/post/{{id}}">
+        <div class="content mt-2 bg-light px-1 py-2">
+            <h3>{{title}}</h3>
+            <p>
+                {{content}}
+            </p>
 
-<div class="content mt-2 bg-light px-1 py-2">
-    <h3>{{title}}</h3>
-    <p>
-    {{content}}
-    </p>
-    {{/each}}
+    </a>
+        </div>
 </div>
+{{/each}}
+
+
 
 <script src="/js/newpost.js"></script>
